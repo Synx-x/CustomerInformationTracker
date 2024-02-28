@@ -1,0 +1,67 @@
+﻿@model CustomerInformationTracker.Infrastructure.Models.Customer
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Customer</title>
+</head>
+<body>
+
+    <div class="container">
+        <h4>Create Customer</h4>
+        <hr />
+        <form asp-action="Create" id="createCustomerForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TelephoneNumber" class="control-label"></label>
+                <input asp-for="TelephoneNumber" class="form-control" />
+                <span asp-validation-for="TelephoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactPersonName" class="control-label"></label>
+                <input asp-for="ContactPersonName" class="form-control" />
+                <span asp-validation-for="ContactPersonName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactPersonEmailAddress" class="control-label"></label>
+                <input asp-for="ContactPersonEmailAddress" class="form-control" />
+                <span asp-validation-for="ContactPersonEmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VATNumber" class="control-label"></label>
+                <input asp-for="VATNumber" class="form-control" />
+                <span asp-validation-for="VATNumber" class="text-danger"></span>
+            </div>
+        </form>
+    </div>
+    <div class="container action-links">
+        <button type="button" id="submitForm" class="btn btn-primary">Create</button>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('submitForm').addEventListener('click', function () {
+                document.getElementById('createCustomerForm').submit();
+            });
+        });
+    </script>
+</body>
+</html>

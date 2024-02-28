@@ -1,9 +1,20 @@
-﻿
+﻿@{
+    ViewData["Title"] = "Customers";
+}
+
 <div class="text-center">
-    <h1 class="display-4">List of Available Customers</h1>
+    <h1 class="display-4">Customers</h1>
 </div>
 
-<table id="customersTable" class="table table-striped" style="width:100%">
+<!-- Filtering Form -->
+<div id="filters">
+    <input type="text" id="nameFilter" placeholder="Filter by Name" />
+    <input type="text" id="vatNumberFilter" placeholder="Filter by VAT Number" />
+    <button id="filterButton">Filter</button>
+</div>
+
+<!-- Dynamic Table Placeholder -->
+<table id="customersTable" class="table table-striped">
     <thead>
         <tr>
             <th>Name</th>
@@ -16,5 +27,29 @@
         </tr>
     </thead>
     <tbody>
+        <!-- Content will be loaded here dynamically -->
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            loadCustomers();
+            $('#filterButton').click(function() {
+                loadCustomers();
+            });
+        });
+
+        function loadCustomers() {
+            var name = $('#nameFilter').val();
+            var vatNumber = $('#vatNumberFilter').val();
+            debugger;
+            $.ajax({
+                url: '@Url.Action("Details", "CustomerController")',
+                success: function(data) {
+                    $('#customersTable tbody').html(data);
+                }
+            });
+        }
+    </script>
+}

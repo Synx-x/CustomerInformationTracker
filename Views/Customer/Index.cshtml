@@ -1,0 +1,94 @@
+﻿@model IEnumerable<CustomerInformationTracker.Infrastructure.Models.Customer>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer List</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        table.dataTable.no-footer {
+            border-bottom: 1px solid #eee;
+        }
+        table.dataTable thead th, table.dataTable thead td {
+            border-bottom: 1px solid #eee;
+        }
+        table.dataTable tbody td {
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="mb-4">
+            <h2 class="h3">Customer List</h2>
+            <p>Manage your customer information efficiently.</p>
+        </div>
+        <p>
+            <a href="@Url.Action("Create")" class="btn btn-primary">Create New</a>
+        </p>
+        <table class="table data-table" style="width:100%">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Address)</th>
+                    <th>@Html.DisplayNameFor(model => model.TelephoneNumber)</th>
+                    <th>@Html.DisplayNameFor(model => model.ContactPersonName)</th>
+                    <th>@Html.DisplayNameFor(model => model.ContactPersonEmailAddress)</th>
+                    <th>@Html.DisplayNameFor(model => model.VATNumber)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TelephoneNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ContactPersonName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ContactPersonEmailAddress)</td>
+                        <td>@Html.DisplayFor(modelItem => item.VATNumber)</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-success btn-sm">Edit</a>
+                            <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-info btn-sm">Details</a>
+                            <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.data-table').DataTable({
+                "pagingType": "simple_numbers",
+                "searching": true,
+                "order": [[0, "asc"]],
+                "pageLength": 10
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+﻿@model CustomerInformationTracker.Infrastructure.Models.Customer
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Customer Details</title>
+    <style>
+        dt {
+            padding-top: 10px;
+        }
+
+        dd {
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h4>Customer Details</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TelephoneNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TelephoneNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ContactPersonName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ContactPersonName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ContactPersonEmailAddress)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ContactPersonEmailAddress)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.VATNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.VATNumber)
+            </dd>
+        </dl>
+    </div>
+    <div class="container action-links">
+        <a href="@Url.Action("Edit", new { id = Model?.Id })" class="btn btn-primary">Edit</a>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+    </div>
+</body>
+</html>

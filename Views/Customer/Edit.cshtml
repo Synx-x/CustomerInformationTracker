@@ -1,0 +1,145 @@
+﻿@model CustomerInformationTracker.Infrastructure.Models.Customer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Customer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+
+            .form-control:focus {
+                color: #495057;
+                background-color: #fff;
+                border-color: #80bdff;
+                outline: 0;
+                box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+            }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+            .btn-primary:hover {
+                color: #fff;
+                background-color: #0069d9;
+                border-color: #0062cc;
+            }
+
+        label {
+            margin-bottom: .5rem;
+        }
+
+        .text-danger {
+            color: #dc3545;
+        }
+
+        .action-links a {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h4 class="mb-3">Edit Customer</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-8">
+                <form asp-action="Edit" id="editCustomerForm">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TelephoneNumber" class="control-label"></label>
+                        <input asp-for="TelephoneNumber" class="form-control" />
+                        <span asp-validation-for="TelephoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ContactPersonName" class="control-label"></label>
+                        <input asp-for="ContactPersonName" class="form-control" />
+                        <span asp-validation-for="ContactPersonName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ContactPersonEmailAddress" class="control-label"></label>
+                        <input asp-for="ContactPersonEmailAddress" class="form-control" />
+                        <span asp-validation-for="ContactPersonEmailAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="VATNumber" class="control-label"></label>
+                        <input asp-for="VATNumber" class="form-control" />
+                        <span asp-validation-for="VATNumber" class="text-danger"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+        <div class="container action-links">
+        <button type="button" id="submitForm" class="btn btn-primary">Save</button>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+    </div>
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('submitForm').addEventListener('click', function () {
+                document.getElementById('editCustomerForm').submit();
+            });
+        });
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
