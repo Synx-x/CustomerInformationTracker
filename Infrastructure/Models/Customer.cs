@@ -4,6 +4,7 @@ namespace CustomerInformationTracker.Infrastructure.Models
 {
     public class Customer
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]

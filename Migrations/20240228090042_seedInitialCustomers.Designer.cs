@@ -3,6 +3,7 @@ using CustomerInformationTracker.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CustomerInformationTracker.Migrations
 {
     [DbContext(typeof(CustomerDBContext))]
-    partial class CustomerDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240228090042_seedInitialCustomers")]
+    partial class seedInitialCustomers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,7 +74,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "sipho@arksoft.co.za",
                             ContactPersonName = "Contact Sipho",
                             Name = "Sipho",
-                            TelephoneNumber = "(+27) 67 101 0001",
+                            TelephoneNumber = "(27) 0101-0001",
                             VATNumber = "VAT001"
                         },
                         new
@@ -81,7 +84,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "thabo@arksoft.co.za",
                             ContactPersonName = "Contact Thabo",
                             Name = "Thabo",
-                            TelephoneNumber = "(+27) 67 102 0002",
+                            TelephoneNumber = "(27) 0102-0002",
                             VATNumber = "VAT002"
                         },
                         new
@@ -91,7 +94,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "naledi@arksoft.co.za",
                             ContactPersonName = "Contact Naledi",
                             Name = "Naledi",
-                            TelephoneNumber = "(+27) 67 103 0003",
+                            TelephoneNumber = "(27) 0103-0003",
                             VATNumber = "VAT003"
                         },
                         new
@@ -101,7 +104,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "lerato@arksoft.co.za",
                             ContactPersonName = "Contact Lerato",
                             Name = "Lerato",
-                            TelephoneNumber = "(+27) 67 104 0004",
+                            TelephoneNumber = "(27) 0104-0004",
                             VATNumber = "VAT004"
                         },
                         new
@@ -111,7 +114,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "tumi@arksoft.co.za",
                             ContactPersonName = "Contact Tumi",
                             Name = "Tumi",
-                            TelephoneNumber = "(+27) 67 105 0005",
+                            TelephoneNumber = "(27) 0105-0005",
                             VATNumber = "VAT005"
                         },
                         new
@@ -121,7 +124,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "kagiso@arksoft.co.za",
                             ContactPersonName = "Contact Kagiso",
                             Name = "Kagiso",
-                            TelephoneNumber = "(+27) 67 106 0006",
+                            TelephoneNumber = "(27) 0106-0006",
                             VATNumber = "VAT006"
                         },
                         new
@@ -131,7 +134,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "mpho@arksoft.co.za",
                             ContactPersonName = "Contact Mpho",
                             Name = "Mpho",
-                            TelephoneNumber = "(+27) 67 107 0007",
+                            TelephoneNumber = "(27) 0107-0007",
                             VATNumber = "VAT007"
                         },
                         new
@@ -141,7 +144,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "amandla@arksoft.co.za",
                             ContactPersonName = "Contact Amandla",
                             Name = "Amandla",
-                            TelephoneNumber = "(+27) 67 108 0008",
+                            TelephoneNumber = "(27) 0108-0008",
                             VATNumber = "VAT008"
                         },
                         new
@@ -151,7 +154,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "siyanda@arksoft.co.za",
                             ContactPersonName = "Contact Siyanda",
                             Name = "Siyanda",
-                            TelephoneNumber = "(+27) 67 109 0009",
+                            TelephoneNumber = "(27) 0109-0009",
                             VATNumber = "VAT009"
                         },
                         new
@@ -161,7 +164,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "themba@arksoft.co.za",
                             ContactPersonName = "Contact Themba",
                             Name = "Themba",
-                            TelephoneNumber = "(+27) 67 110 0010",
+                            TelephoneNumber = "(27) 0110-0010",
                             VATNumber = "VAT0010"
                         },
                         new
@@ -171,7 +174,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "nandi@arksoft.co.za",
                             ContactPersonName = "Contact Nandi",
                             Name = "Nandi",
-                            TelephoneNumber = "(+27) 67 111 0011",
+                            TelephoneNumber = "(27) 0111-0011",
                             VATNumber = "VAT0011"
                         },
                         new
@@ -181,7 +184,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "fikile@arksoft.co.za",
                             ContactPersonName = "Contact Fikile",
                             Name = "Fikile",
-                            TelephoneNumber = "(+27) 67 112 0012",
+                            TelephoneNumber = "(27) 0112-0012",
                             VATNumber = "VAT0012"
                         },
                         new
@@ -191,7 +194,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "ayanda@arksoft.co.za",
                             ContactPersonName = "Contact Ayanda",
                             Name = "Ayanda",
-                            TelephoneNumber = "(+27) 67 113 0013",
+                            TelephoneNumber = "(27) 0113-0013",
                             VATNumber = "VAT0013"
                         },
                         new
@@ -201,7 +204,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "thandiwe@arksoft.co.za",
                             ContactPersonName = "Contact Thandiwe",
                             Name = "Thandiwe",
-                            TelephoneNumber = "(+27) 67 114 0014",
+                            TelephoneNumber = "(27) 0114-0014",
                             VATNumber = "VAT0014"
                         },
                         new
@@ -211,7 +214,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "lindiwe@arksoft.co.za",
                             ContactPersonName = "Contact Lindiwe",
                             Name = "Lindiwe",
-                            TelephoneNumber = "(+27) 67 115 0015",
+                            TelephoneNumber = "(27) 0115-0015",
                             VATNumber = "VAT0015"
                         },
                         new
@@ -221,7 +224,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "siya@arksoft.co.za",
                             ContactPersonName = "Contact Siya",
                             Name = "Siya",
-                            TelephoneNumber = "(+27) 67 116 0016",
+                            TelephoneNumber = "(27) 0116-0016",
                             VATNumber = "VAT0016"
                         },
                         new
@@ -231,7 +234,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "senzo@arksoft.co.za",
                             ContactPersonName = "Contact Senzo",
                             Name = "Senzo",
-                            TelephoneNumber = "(+27) 67 117 0017",
+                            TelephoneNumber = "(27) 0117-0017",
                             VATNumber = "VAT0017"
                         },
                         new
@@ -241,7 +244,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "nomzamo@arksoft.co.za",
                             ContactPersonName = "Contact Nomzamo",
                             Name = "Nomzamo",
-                            TelephoneNumber = "(+27) 67 118 0018",
+                            TelephoneNumber = "(27) 0118-0018",
                             VATNumber = "VAT0018"
                         },
                         new
@@ -251,7 +254,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "bongani@arksoft.co.za",
                             ContactPersonName = "Contact Bongani",
                             Name = "Bongani",
-                            TelephoneNumber = "(+27) 67 119 0019",
+                            TelephoneNumber = "(27) 0119-0019",
                             VATNumber = "VAT0019"
                         },
                         new
@@ -261,7 +264,7 @@ namespace CustomerInformationTracker.Migrations
                             ContactPersonEmailAddress = "sibusiso@arksoft.co.za",
                             ContactPersonName = "Contact Sibusiso",
                             Name = "Sibusiso",
-                            TelephoneNumber = "(+27) 67 120 0020",
+                            TelephoneNumber = "(27) 0120-0020",
                             VATNumber = "VAT0020"
                         });
                 });

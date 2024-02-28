@@ -26,22 +26,19 @@ namespace CustomerInformationTracker.Controllers
         // GET: Customer
         public async Task<IActionResult> Index()
         {
-            var serviceCustomer = await _service.GetCustomerByIdAsync(1);
+            var customer = await _service.GetAllCustomersAsync();
             
-            var customers = await _context.Customers.ToListAsync();
-
-            return View(customers);
+            return View(customer);
         }
 
         // GET: Customer/Details/5
-        public async Task<IActionResult> Details()
+        public async Task<IActionResult> Details(int id)
         {
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync();
-            if (customer == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
+
+            var customer = await _service.GetCustomerByIdAsync(id);
+
+            if (customer == null) return NotFound();
 
             return View(customer);
         }
@@ -53,34 +50,29 @@ namespace CustomerInformationTracker.Controllers
         }
 
         // POST: Customer/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Address,TelephoneNumber,ContactPersonName,ContactPersonEmailAddress,VATNumber")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customer);
-                await _context.SaveChangesAsync();
+
+                await _service.CreateCustomerAsync(customer);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(customer);
         }
 
         // GET: Customer/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
+            var customer = await _service.GetCustomerByIdAsync(id);
+
+            if (customer == null) return NotFound();
+
             return View(customer);
         }
 
@@ -91,10 +83,7 @@ namespace CustomerInformationTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Address,TelephoneNumber,ContactPersonName,ContactPersonEmailAddress,VATNumber")] Customer customer)
         {
-            if (id != customer.Id)
-            {
-                return NotFound();
-            }
+            if (id != customer.Id) return NotFound();
 
             if (ModelState.IsValid)
             {
@@ -120,19 +109,13 @@ namespace CustomerInformationTracker.Controllers
         }
 
         // GET: Customer/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
+            var customer = await _service.GetCustomerByIdAsync(id);
+
+            if (customer == null) return NotFound();
 
             return View(customer);
         }
@@ -142,13 +125,8 @@ namespace CustomerInformationTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer != null)
-            {
-                _context.Customers.Remove(customer);
-            }
+            await _service.DeleteCustomerAsync(id);
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

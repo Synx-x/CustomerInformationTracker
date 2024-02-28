@@ -18,21 +18,15 @@
             padding: 20px;
             background-color: #f4f4f4;
         }
+
         .container {
             background: #fff;
             border: 1px solid #eee;
             border-radius: 5px;
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,.1);
-        }
-        table.dataTable.no-footer {
-            border-bottom: 1px solid #eee;
-        }
-        table.dataTable thead th, table.dataTable thead td {
-            border-bottom: 1px solid #eee;
-        }
-        table.dataTable tbody td {
-            border-top: 1px solid #eee;
+            margin-top: 20px;
+            max-width: 100%;
         }
     </style>
 </head>
@@ -45,36 +39,40 @@
         <p>
             <a href="@Url.Action("Create")" class="btn btn-primary">Create New</a>
         </p>
-        <table class="table data-table" style="width:100%">
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.Name)</th>
-                    <th>@Html.DisplayNameFor(model => model.Address)</th>
-                    <th>@Html.DisplayNameFor(model => model.TelephoneNumber)</th>
-                    <th>@Html.DisplayNameFor(model => model.ContactPersonName)</th>
-                    <th>@Html.DisplayNameFor(model => model.ContactPersonEmailAddress)</th>
-                    <th>@Html.DisplayNameFor(model => model.VATNumber)</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model) {
+        <div class="table-responsive">
+            <!-- Make table scrollable on small devices -->
+            <table class="table data-table" style="width:100%">
+                <thead>
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
-                        <td>@Html.DisplayFor(modelItem => item.TelephoneNumber)</td>
-                        <td>@Html.DisplayFor(modelItem => item.ContactPersonName)</td>
-                        <td>@Html.DisplayFor(modelItem => item.ContactPersonEmailAddress)</td>
-                        <td>@Html.DisplayFor(modelItem => item.VATNumber)</td>
-                        <td>
-                            <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-success btn-sm">Edit</a>
-                            <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-info btn-sm">Details</a>
-                            <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger btn-sm">Delete</a>
-                        </td>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.Address)</th>
+                        <th>@Html.DisplayNameFor(model => model.TelephoneNumber)</th>
+                        <th>@Html.DisplayNameFor(model => model.ContactPersonName)</th>
+                        <th>@Html.DisplayNameFor(model => model.ContactPersonEmailAddress)</th>
+                        <th>@Html.DisplayNameFor(model => model.VATNumber)</th>
+                        <th>Actions</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr style="border-color:#eee">
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TelephoneNumber)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ContactPersonName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ContactPersonEmailAddress)</td>
+                            <td>@Html.DisplayFor(modelItem => item.VATNumber)</td>
+                            <td>
+                                <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-success btn-sm">Edit</a>
+                                <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-info btn-sm">Details</a>
+                                <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -86,7 +84,8 @@
                 "pagingType": "simple_numbers",
                 "searching": true,
                 "order": [[0, "asc"]],
-                "pageLength": 10
+                "pageLength": 10,
+                responsive: true // Enhance with DataTables responsive plugin if necessary
             });
         });
     </script>
